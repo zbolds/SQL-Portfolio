@@ -1,0 +1,30 @@
+-- see all data
+SELECT *
+FROM fortune_companies;
+
+-- 1. Ranking based on revenue size
+SELECT company_name, revenue,
+CASE 
+    WHEN revenue < 175 THEN 'micro'
+    WHEN revenue >= 175 AND revenue < 250 THEN 'small'
+    WHEN revenue >= 251 AND revenue < 400 THEN 'medium'
+    WHEN revenue >= 400 THEN 'large'
+END AS company_size
+FROM fortune_companies
+ORDER BY revenue DESC;
+
+-- 2. Count how many companies each industry has
+SELECT industry, COUNT(*) AS company_count, AVG(employees) AS average_employees
+FROM fortune_companies
+GROUP BY industry;
+
+-- 3. Find all industries with at least 20 days of PTO
+SELECT industry, AVG(paid_time_off_days) AS average_pto
+FROM fortune_companies
+GROUP BY industry
+HAVING average_pto >= 20;
+
+-- 4. Find companies that are in Technology and have less than 100000 employees
+SELECT company_name, industry, employees
+FROM fortune_companies
+WHERE industry = 'Technology' AND employees < 100000;
