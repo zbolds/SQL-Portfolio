@@ -1,3 +1,4 @@
+This project utilized data from the following superstore dataset:
 CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,
     item_name TEXT,
