@@ -16,7 +16,6 @@ AND orderid <> 'Order ID'
 #3. Select the customer account numbers for all the orders that were placed in February. 
 SELECT distinct acctnum
 FROM BIT_DB.customers cust
-
 INNER JOIN BIT_DB.FebSales Feb
 ON cust.order_id=FEB.orderid
 WHERE length(orderid) = 6 
